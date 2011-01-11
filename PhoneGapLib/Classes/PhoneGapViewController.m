@@ -11,7 +11,8 @@
 
 @implementation PhoneGapViewController
 
-@synthesize supportedOrientations, webView;
+@synthesize supportedOrientations;
+@synthesize webView;
 
 - (id) init
 {
@@ -20,6 +21,19 @@
 	}
 	
 	return self;
+}
+
+- (void)loadView
+{
+	CGRect screenBounds = [ [ UIScreen mainScreen ] bounds ];
+	CGRect webViewBounds = [ [ UIScreen mainScreen ] applicationFrame ] ;
+	webViewBounds.origin = screenBounds.origin;
+	
+	webView = [ [ UIWebView alloc ] initWithFrame:webViewBounds];
+    webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+	
+	[ self.view addSubview:webView];
+	
 }
 
 

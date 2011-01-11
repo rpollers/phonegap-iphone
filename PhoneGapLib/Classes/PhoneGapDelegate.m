@@ -171,13 +171,17 @@ static NSString *gapVersion;
 
 
 	window.autoresizesSubviews = YES;
-	CGRect webViewBounds = [ [ UIScreen mainScreen ] applicationFrame ] ;
-	webViewBounds.origin = screenBounds.origin;
-	webView = [ [ UIWebView alloc ] initWithFrame:webViewBounds];
-    webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
 	
-	viewController.webView = webView;
-	[viewController.view addSubview:webView];
+	//CGRect webViewBounds = [ [ UIScreen mainScreen ] applicationFrame ] ;
+	//webViewBounds.origin = screenBounds.origin;
+	
+	//webView = [ [ UIWebView alloc ] initWithFrame:webViewBounds];
+    //webView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+	
+	//viewController.webView = webView;
+	//[ viewController.view addSubview:webView];
+	
+	webView = viewController.webView;
 	
 	// This has been moved from the webViewDidStartLoad because invokedURL never had been set
 	// from handleOpenURL - so I've changed this method from using didFinishLaunching to

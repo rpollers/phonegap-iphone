@@ -526,7 +526,14 @@ static NSString *gapVersion;
 */
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+
+	NSString* jsString = @"PhoneGap.onUnload();";
+	// Doing nothing with the callback string, just to make sure we are making a sync call
+	NSString* ret = [self.webView stringByEvaluatingJavaScriptFromString:jsString];
+	
+	
 	NSLog(@"applicationWillTerminate");
+	
 	// empty the tmp directory
 	NSFileManager* fileMgr = [[NSFileManager alloc] init];
 	NSString* tmpPath = [[[self class] applicationDocumentsDirectory] stringByAppendingPathComponent: [[self class] tmpFolderName]];
@@ -547,14 +554,7 @@ static NSString *gapVersion;
 - (void)applicationWillResignActive:(UIApplication *)application
 {
 	NSLog(@"%@",@"applicationWillResignActive");
-	
-	NSString* jsString = 
-	@"(function(){"
-	"var e = document.createEvent('Events');"
-	"e.initEvent('pause');"
-	"document.dispatchEvent(e);"
-	"})();";
-	
+	NSString* jsString = @"PhoneGap.fireEvent('pause');";
 	[self.webView stringByEvaluatingJavaScriptFromString:jsString];
 	
 }
@@ -567,14 +567,7 @@ static NSString *gapVersion;
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
 	NSLog(@"%@",@"applicationWillEnterForeground");
-	
-	NSString* jsString = 
-	@"(function(){"
-	"var e = document.createEvent('Events');"
-	"e.initEvent('resume');"
-	"document.dispatchEvent(e);"
-	"})();";
-	
+	NSString* jsString = @"PhoneGap.fireEvent('resume');";
 	[self.webView stringByEvaluatingJavaScriptFromString:jsString];
 
 }

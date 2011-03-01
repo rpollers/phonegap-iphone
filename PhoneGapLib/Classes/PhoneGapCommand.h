@@ -21,6 +21,8 @@
 -(PhoneGapCommand*) initWithWebView:(UIWebView*)theWebView settings:(NSDictionary*)classSettings;
 -(PhoneGapCommand*) initWithWebView:(UIWebView*)theWebView;
 
+-(void)onAppTerminate;
+
 -(PhoneGapDelegate*) appDelegate;
 -(UIViewController*) appViewController;
 

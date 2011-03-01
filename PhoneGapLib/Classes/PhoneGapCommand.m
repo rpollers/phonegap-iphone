@@ -13,6 +13,7 @@
 @synthesize webView;
 @synthesize settings;
 
+
 -(PhoneGapCommand*) initWithWebView:(UIWebView*)theWebView settings:(NSDictionary*)classSettings
 {
     self = [self initWithWebView:theWebView];
@@ -25,8 +26,18 @@
 {
     self = [super init];
     if (self)
+	{
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onAppTerminate) name:UIApplicationWillTerminateNotification object:nil];
         [self setWebView:theWebView];
+		
+	}
     return self;
+}
+
+-(void)onAppTerminate
+{
+	// override this if you need to do any cleanup on app exit
 }
 
 - (void)dealloc

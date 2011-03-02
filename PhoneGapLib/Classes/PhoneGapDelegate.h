@@ -40,12 +40,11 @@
 	IBOutlet UIImageView *imageView;
 	IBOutlet UIActivityIndicatorView *activityView;
 
-	NSURLConnection *conn;				// added by urbian
-	NSMutableData *receivedData;		// added by urbian	
-
     UIInterfaceOrientation orientationType;
     NSDictionary *settings;
     NSMutableDictionary *commandObjects;
+	
+	
     NSURL *invokedURL;
 }
 
@@ -55,15 +54,6 @@
 @property (nonatomic, retain) UIActivityIndicatorView *activityView;
 @property (nonatomic, retain) NSMutableDictionary *commandObjects;
 @property (nonatomic, retain) NSDictionary *settings;
-@property (nonatomic, retain) NSURL *invokedURL;
-
-- (id) getCommandInstance:(NSString*)className;
-- (void) javascriptAlert:(NSString*)text;
-- (BOOL) execute:(InvokedUrlCommand*)command;
-- (NSString*) appURLScheme;
-- (NSDictionary*) deviceProperties;
-- (void)applicationWillTerminate:(UIApplication *)application;
-
 
 + (NSDictionary*)getBundlePlist:(NSString *)plistName;
 + (NSString*) wwwFolderName;
@@ -72,5 +62,20 @@
 + (NSString*) applicationDocumentsDirectory;
 + (NSString*) tmpFolderName;
 + (NSString*) startPage;
+
+
+- (id) getCommandInstance:(NSString*)className;
+- (void) javascriptAlert:(NSString*)text;
+- (BOOL) execute:(InvokedUrlCommand*)command;
+- (NSString*) appURLScheme;
+- (NSDictionary*) deviceProperties;
+
+- (void)applicationDidEnterBackground:(UIApplication *)application;
+- (void)applicationWillEnterForeground:(UIApplication *)application;
+- (void)applicationWillResignActive:(UIApplication *)application;
+- (void)applicationWillTerminate:(UIApplication *)application;
+
+
+
 
 @end

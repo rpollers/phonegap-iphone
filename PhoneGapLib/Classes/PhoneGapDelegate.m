@@ -488,10 +488,6 @@ static NSString *gapVersion;
 		NSLog(@"Error removing tmp directory: %@", [err localizedDescription]); // could error because was already deleted
 	}
 	[fileMgr release];
-	
-	// clean up any Contact objects
-	// Note: this can safely be moved to the Contacts::PhoneGapCommand using the defaultNotification center appTerminate callback
-	[[Contact class] releaseDefaults];
 }
 
 /*

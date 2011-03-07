@@ -309,12 +309,8 @@ static NSString *gapVersion;
 
 - (void) javascriptAlert:(NSString*)text
 {
-	NSString* jsString = nil;
-	jsString = [[NSString alloc] initWithFormat:@"alert('%@');", text];
+	NSString* jsString = [NSString stringWithFormat:@"alert('%@');", text];
 	[webView stringByEvaluatingJavaScriptFromString:jsString];
-
-	NSLog(@"%@", jsString);
-	[jsString release];
 }
 
 /**

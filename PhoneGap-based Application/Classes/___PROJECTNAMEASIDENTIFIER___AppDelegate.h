@@ -10,7 +10,13 @@
 #import "PhoneGapDelegate.h"
 
 @interface ___PROJECTNAMEASIDENTIFIER___AppDelegate : PhoneGapDelegate {
+
+	NSString* invokeString;
 }
+
+// invoke string is passed to your app on launch, this is only valid if you 
+// edit ___PROJECTNAME___.plist to add a protocol
+@property (copy)  NSString* invokeString;
 
 @end
 
